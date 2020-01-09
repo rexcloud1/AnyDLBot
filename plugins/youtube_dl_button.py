@@ -33,7 +33,6 @@ from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
-from PIL import Image
 
 async def youtube_dl_call_back(bot, update):
     cb_data = update.data
@@ -186,16 +185,6 @@ async def youtube_dl_call_back(bot, update):
                 chat_id=update.message.chat.id,
                 text=Translation.RCHD_TG_API_LIMIT.format(time_taken_for_download, humanbytes(file_size)),
                 message_id=update.message.message_id
-            )
-        else:
-            is_w_f = False
-            images = await generate_screen_shots(
-                download_directory,
-                tmp_directory_for_each_user,
-                is_w_f,
-                Config.DEF_WATER_MARK_FILE,
-                300,
-                9 
             )
             logger.info(images)
             await bot.edit_message_text(
