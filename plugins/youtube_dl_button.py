@@ -34,7 +34,6 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
-from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
 
 
 async def youtube_dl_call_back(bot, update):
@@ -171,7 +170,7 @@ async def youtube_dl_call_back(bot, update):
             text=error_message
         )
         return False
-    if t_response:
+    t_response:
         # logger.info(t_response)
         os.remove(save_ytdl_json_path)
         end_one = datetime.now()
@@ -188,16 +187,6 @@ async def youtube_dl_call_back(bot, update):
                 chat_id=update.message.chat.id,
                 text=Translation.RCHD_TG_API_LIMIT.format(time_taken_for_download, humanbytes(file_size)),
                 message_id=update.message.message_id
-            )
-        else:
-            is_w_f = False
-            images = await generate_screen_shots(
-                download_directory,
-                tmp_directory_for_each_user,
-                is_w_f,
-                Config.DEF_WATER_MARK_FILE,
-                300,
-                1
             )
             logger.info(images)
             await bot.edit_message_text(
