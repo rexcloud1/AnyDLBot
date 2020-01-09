@@ -34,8 +34,6 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
-from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
-
 
 async def youtube_dl_call_back(bot, update):
     cb_data = update.data
@@ -197,7 +195,7 @@ async def youtube_dl_call_back(bot, update):
                 is_w_f,
                 Config.DEF_WATER_MARK_FILE,
                 300,
-                (9 * 0)
+                9 
             )
             logger.info(images)
             await bot.edit_message_text(
