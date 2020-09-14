@@ -190,7 +190,7 @@ async def youtube_dl_call_back(bot, update):
                 message_id=update.message.message_id
             )
         else:
-            is_w_f = true
+            is_w_f = True
             images = await generate_screen_shots(
                 download_directory,
                 tmp_directory_for_each_user,
